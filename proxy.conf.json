@@ -1,0 +1,7 @@
+{
+    "/api/v1/dragon": {
+        "target": "http://5c4b2a47aa8ee500142b4887.mockapi.io",
+        "secure": false,
+        "changeOrigin": true
+    }
+}
