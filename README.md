@@ -1,6 +1,8 @@
 # Dragon-Web
-
 The answer to everything (well... almost) that's Angular Material
+
+## Run
+ng serve --proxy-config proxy.conf.json
 
 ## Description
 
