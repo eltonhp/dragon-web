@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Location} from '@angular/common';
+import {ActivatedRoute, ParamMap} from '@angular/router';
+import {Dragon} from '../../../core/model/dragon';
+import {switchMap} from 'rxjs/operators';
+import {DragonService} from '../../../core/services/dragon.service';
 
 @Component({
   selector: 'app-dragon-detail',
@@ -8,9 +12,19 @@ import {Location} from '@angular/common';
 })
 export class DragonDetailComponent implements OnInit {
 
-  constructor(private location: Location) { }
+  dragon: Dragon;
+  constructor(private location: Location,
+              private dragonService: DragonService,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
+      this.route.paramMap.pipe(
+              switchMap((params: ParamMap) =>
+              this.dragonService.get(params.get('id')))
+      ).subscribe((result: Dragon) => {
+          this.dragon = result;
+          console.log('detalhe', this.dragon);
+      });
   }
 
 

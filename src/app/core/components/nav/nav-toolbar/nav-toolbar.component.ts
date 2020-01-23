@@ -1,6 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Page } from '../../../services/navigation/navigation.service';
 
+/**
+ * @author Elton H. Paula
+ */
 @Component({
     selector: 'app-nav-toolbar',
     templateUrl: './nav-toolbar.component.html',

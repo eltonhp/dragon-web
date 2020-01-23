@@ -25,7 +25,7 @@ export const navRoutes: NavRoute[] = [
         pathMatch: 'full',
     },
 
-    { path: 'dragon', data: { title: 'Dragon' },
+    { path: 'dragon', data: { title: 'Dragon', action: {button: 'add', uri: '/nav/dragon/dragon-edit'} },
         loadChildren: () =>
             import('./pages/dragon/dragon.module').then(
                 m => m.DragonModule,

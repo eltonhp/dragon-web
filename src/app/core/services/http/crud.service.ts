@@ -1,18 +1,21 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {Config} from './config';
+import {MessageService} from '../message.service';
 
 export abstract class CrudService<T = any> {
     abstract endpoint: any;
     url: any;
 
-    protected constructor(protected http: HttpClient) {}
+    protected constructor(protected http: HttpClient, protected alertService: MessageService) {}
 
     public get<G>(request = null): Observable<G>  {
         const header = Config.httpOptions.headers;
         const uri = request ? `${this.endpoint}/${request}` : `${this.endpoint}`;
-        return this.http.get<G>(uri, {headers:  header });
+        return this.http.get<G>(uri, {headers:  header })
+                   .pipe(catchError(this.handleError('get', [])));
+
     }
 
     public getList(): Observable<T[] | null> {
@@ -47,6 +50,21 @@ export abstract class CrudService<T = any> {
         return response;
     }
 
+
+    private handleError (operation = 'operation', result?: any) {
+        return (error: any): Observable<any> => {
+            // send the error to remote logging infrastructure
+            console.error(error); // log to console instead
+
+            // TODO: better job of transforming error for user consumption
+            this.alertService.error(error.status, `${operation} failed: ${error.message}`);
+
+            // Let the app keep running by returning an empty result.
+            return of(result as any);
+        };
+    }
+
+
     public errorHandler(
         method: string,
         error: HttpErrorResponse,
@@ -57,4 +75,6 @@ export abstract class CrudService<T = any> {
         );
         return Promise.reject(error);
     }
+
+
 }

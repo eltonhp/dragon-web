@@ -7,6 +7,9 @@ import { NavRoute } from '../../../nav-routing';
 import { AuthService } from '../../../auth/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
+/**
+ * @author Elton H. Paula
+ */
 @Component({
     selector: 'app-nav',
     templateUrl: './nav.component.html',

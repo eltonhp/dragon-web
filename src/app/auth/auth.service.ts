@@ -3,6 +3,8 @@ import { CrudService } from '../core/services/http/crud.service';
 import { HttpClient } from '@angular/common/http';
 import { StorageService } from '../core/services/storage/storage.service';
 import { StorageKey } from '../core/services/storage/storage.model';
+import {MessageService} from '../core/services/message.service';
+
 const { AUTH_TOKEN } = StorageKey;
 
 @Injectable({
@@ -16,8 +18,8 @@ export class AuthService extends CrudService {
     token: string;
     redirectUrl: string;
 
-    constructor(http: HttpClient, private storage: StorageService) {
-        super(http);
+    constructor(http: HttpClient, private storage: StorageService, alertService: MessageService) {
+        super(http, alertService);
         this.token = this.storage.read(AUTH_TOKEN) || '';
     }
 

@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 import { NavRoute, NavRouteService } from '../../../nav-routing';
 
 export class Page {
+    action?: any;
     title: string;
     isChild: boolean;
-    constructor(title, isChild) {
+    constructor(action = null, title, isChild) {
+        this.action = action;
         this.title = title;
         this.isChild = isChild;
     }
@@ -76,7 +78,7 @@ export class NavigationService {
         );
     }
 
-    public setActivePage(
+    public setActivePage(action: any,
         title: string,
         url: string[],
         isChild: boolean = false,
@@ -84,6 +86,6 @@ export class NavigationService {
         if (url.length > 0) {
             isChild ? this.pushToStack(url) : this.resetStack(url);
         }
-        this.activePage = new Page(title, isChild);
+        this.activePage = new Page(action, title, isChild);
     }
 }

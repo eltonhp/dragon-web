@@ -2,6 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { NavRoute } from '../../../../nav-routing';
 import { NavigationService } from '../../../services/navigation/navigation.service';
 
+/**
+ * @author Elton H. Paula
+ */
 @Component({
     selector: 'app-nav-menu-item',
     templateUrl: './nav-menu-item.component.html',

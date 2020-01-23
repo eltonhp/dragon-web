@@ -5,10 +5,13 @@ import {MatListModule} from '@angular/material/list';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
-import {MatExpansionModule} from '@angular/material';
+import {MatExpansionModule, MatTableModule} from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 
+/**
+ * @author Elton H. Paula
+ */
 @NgModule({
   declarations: [],
   imports: [
@@ -21,7 +24,8 @@ import {MatInputModule} from '@angular/material/input';
       MatExpansionModule,
       MatCardModule,
       MatInputModule,
-      MatButtonModule
+      MatButtonModule,
+      MatTableModule
   ],
     exports: [
         MatSidenavModule,
@@ -33,6 +37,7 @@ import {MatInputModule} from '@angular/material/input';
         MatCardModule,
         MatInputModule,
         MatButtonModule,
+        MatTableModule
     ]
 })
 export class MaterialModule { }

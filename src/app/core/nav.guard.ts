@@ -51,6 +51,7 @@ export class NavGuard implements CanActivateChild {
             }
             this.previousUrl = noQueryParamsSateUrl;
             this.navigationService.setActivePage(
+                childRoute.data.action,
                 childRoute.data.title,
                 childRoute.url.map(url => url.path),
                 childRoute.data.isChild,
