@@ -36,16 +36,27 @@ export class DragonComponent implements OnInit, OnDestroy, AfterContentChecked  
 
   loadDataSourceDragon() {
       if(this.dataSource.data.length === 0) {
-          this.dragonService.getList().subscribe(value => {
-              console.log('lista de dragões', value);
-              this.dataSource.data = value;
+          this.dragonService.getList().subscribe(result => {
+             this.updateDataSource(result);
           });
       }
   }
 
+  updateDataSource(dragonList: Dragon[]) {
+      this.dataSource.data = dragonList.sort(compare);
+
+      function compare(dragonA, dragonB) {
+          const a = dragonA.name ? dragonA.name : '';
+          const b = dragonB.name ? dragonB.name : '';
+          if (a > b) { return 1; }
+          if (b > a) { return -1; }
+          return 0;
+      }
+  }
 
     onDetails(id: number) {
         this.router.navigate(['/nav/dragon/dragon-detail', id]);
+        this.clearDataSourceDragon();
     }
 
      ngOnDestroy() {

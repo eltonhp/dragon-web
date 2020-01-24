@@ -25,7 +25,7 @@
             </form>
         </mat-card-content>
         <mat-card-actions align="end" >
-            <button mat-button routerLink="/nav/dragon">VOLTAR</button>
+            <button mat-button (click)="onBack()">VOLTAR</button>
             <button mat-button type="submit"  (click)="onSubmit($event)">SALVAR</button>
         </mat-card-actions>
     </mat-card>

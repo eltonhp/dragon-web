@@ -4,6 +4,7 @@ import {catchError} from 'rxjs/operators';
 import {Config} from './config';
 import {MessageService} from '../message.service';
 import {throws} from 'assert';
+import {Dragon} from '../../model/dragon';
 
 export abstract class CrudService<T = any> {
     abstract endpoint: any;
@@ -15,7 +16,7 @@ export abstract class CrudService<T = any> {
         const header = Config.httpOptions.headers;
         const uri = request ? `${this.endpoint}/${request}` : `${this.endpoint}`;
         return this.http.get<G>(uri, {headers:  header })
-                   .pipe(catchError(this.handleError('get', [])));
+                   .pipe( catchError(this.handleError('get', [])));
 
     }
 
@@ -27,9 +28,14 @@ export abstract class CrudService<T = any> {
         return this.get<T>('' + id);
     }
 
+    public put<G>(id: number | string, body): Observable<G> {
+        const header = Config.httpOptions.headers;
+        return this.http.put<G>(`${this.endpoint}/${id}`, body, {headers: header})
+                   .pipe(catchError(this.handleError('put', [])));
+    }
+
     public post<G>(body): Observable<G> {
         const header = Config.httpOptions.headers;
-        const uri = `${this.endpoint}`;
         return this.http.post<G>(this.endpoint, body, {headers:  header })
                    .pipe(catchError(this.handleError('post', [])));
     }
@@ -38,7 +44,7 @@ export abstract class CrudService<T = any> {
         let response = null;
         try {
             response = await this.http
-                .delete(`${this.url}/${this.endpoint}/${id}`)
+                .delete(`${this.endpoint}/${id}`)
                 .toPromise();
         } catch (error) {
             response = this.errorHandler('DELETE', error);
@@ -68,7 +74,7 @@ export abstract class CrudService<T = any> {
         error: HttpErrorResponse,
     ): Promise<never> {
         console.error(
-            `Error occurred during ${method} ${this.url}/${this.endpoint}`,
+            `Error occurred during ${method} ${this.endpoint}`,
             error,
         );
         return Promise.reject(error);

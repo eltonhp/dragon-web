@@ -41,7 +41,7 @@ describe('NavigationService', () => {
 
     describe('setActivePage', () => {
         it('should set the activePage', () => {
-            service.setActivePage('fakeTitle', ['fake'], true);
+            service.setActivePage(null,'fakeTitle', ['fake'], true);
             const activePage = service.getActivePage();
             expect(activePage.title).toEqual('fakeTitle');
             expect(activePage.isChild).toEqual(true);
@@ -50,7 +50,7 @@ describe('NavigationService', () => {
 
     describe('getActivePage', () => {
         it('should get the activePage', () => {
-            service.setActivePage('fakeTitle', ['fake']);
+            service.setActivePage(null,'fakeTitle', ['fake']);
             const activePage = service.getActivePage();
             expect(service.getActivePage()).toEqual(activePage);
         });

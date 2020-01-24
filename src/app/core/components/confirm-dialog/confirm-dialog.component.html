@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<h1 mat-dialog-title>
+    {{title}}
+</h1>
+<mat-card *ngIf="content.length > 0">
+    <div>
+        <div mat-dialog-content>
+            <mat-list>
+                <mat-list-item *ngFor="let c of content">
+                    <span>{{c}}</span>
+                </mat-list-item>
+            </mat-list>
+        </div>
+    </div>
+</mat-card>
+
+<mat-dialog-actions align="end">
+    <button mat-button class="btn btn-sm btn-outline" (click)="onNoClick()"><span translate>Não</span></button>
+    <button mat-button class="btn btn-sm btn-outline" (click)="onYesClick()"><span translate>Sim</span></button>
+</mat-dialog-actions>

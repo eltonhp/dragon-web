@@ -5,6 +5,7 @@ import {environment} from '../../../environments/environment';
 import {MessageService} from './message.service';
 import {Dragon} from '../model/dragon';
 import {switchMap, tap} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
 /**
  * @author Elton H. Paula
@@ -22,12 +23,17 @@ export class DragonService extends  CrudService<Dragon> {
   }
 
   save(dragon: Dragon) {
-      return this.post(dragon).pipe(
-          tap(value => console.log('valor a ser salvo', value)),
-          switchMap(value => {
-              return 'Dragon Salvo com Sucesso!';
-          })
-      );
+      let observable: Observable<any> = null;
+      let message = null;
+      if (dragon.id) {
+          observable = this.put(dragon.id, dragon);
+          message = 'Dragon Alterado com Sucesso!';
+      } else {
+          message = 'Dragon Inserido com Sucesso!';
+          observable = this.post(dragon);
+      }
+
+      return observable.pipe(switchMap(value => message));
   }
 
 
