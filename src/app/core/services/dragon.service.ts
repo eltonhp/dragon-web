@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {MessageService} from './message.service';
 import {Dragon} from '../model/dragon';
+import {switchMap, tap} from 'rxjs/operators';
 
 /**
  * @author Elton H. Paula
@@ -18,6 +19,15 @@ export class DragonService extends  CrudService<Dragon> {
 
   constructor(public http: HttpClient, protected  alertService: MessageService) {
       super(http, alertService);
+  }
+
+  save(dragon: Dragon) {
+      return this.post(dragon).pipe(
+          tap(value => console.log('valor a ser salvo', value)),
+          switchMap(value => {
+              return 'Dragon Salvo com Sucesso!';
+          })
+      );
   }
 
 

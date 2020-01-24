@@ -1,8 +1,8 @@
-.example-container {
-    display: flex;
-    flex-direction: column;
+.card {
+    margin-top: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
-
-.example-container > * {
+.example-full-width {
     width: 100%;
 }

@@ -16,7 +16,7 @@
         </a>
     </div>
 </mat-expansion-panel>
-<a *ngIf="!navigationItem.groupedNavRoutes" mat-list-item class="sidenav-item"
+<a *ngIf="!navigationItem.groupedNavRoutes" mat-list-item class="sidenav-item" style="overflow-y: hidden;"
    [routerLink]="[navigationItem.path]"
    [ngClass]=" isSelected(navigationItem)? 'selected' : ''" disableRipple>
     <div class="item-selector"></div>

@@ -1,8 +1,9 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import {Observable, of} from 'rxjs';
+import {Observable, of, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {Config} from './config';
 import {MessageService} from '../message.service';
+import {throws} from 'assert';
 
 export abstract class CrudService<T = any> {
     abstract endpoint: any;
@@ -26,16 +27,11 @@ export abstract class CrudService<T = any> {
         return this.get<T>('' + id);
     }
 
-    public async post(body): Promise<any> {
-        let response = null;
-        try {
-            response = await this.http
-                .post(`${this.url}/${this.endpoint}`, body)
-                .toPromise();
-        } catch (error) {
-            response = this.errorHandler('POST', error);
-        }
-        return response;
+    public post<G>(body): Observable<G> {
+        const header = Config.httpOptions.headers;
+        const uri = `${this.endpoint}`;
+        return this.http.post<G>(this.endpoint, body, {headers:  header })
+                   .pipe(catchError(this.handleError('post', [])));
     }
 
     public async deleteById(id: number | string): Promise<any> {
@@ -55,12 +51,14 @@ export abstract class CrudService<T = any> {
         return (error: any): Observable<any> => {
             // send the error to remote logging infrastructure
             console.error(error); // log to console instead
+            if (operation === 'get') {
+                this.alertService.error(error.status, `${operation} failed: ${error.message}`);
+                return of(result as any);
 
-            // TODO: better job of transforming error for user consumption
-            this.alertService.error(error.status, `${operation} failed: ${error.message}`);
+            } else {
+                return throwError(error);
+            }
 
-            // Let the app keep running by returning an empty result.
-            return of(result as any);
         };
     }
 

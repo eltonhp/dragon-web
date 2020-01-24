@@ -13,7 +13,7 @@ const { AUTH_TOKEN } = StorageKey;
 @Injectable({
     providedIn: 'root',
 })
-export class AuthService extends CrudService {
+export class AuthService extends CrudService<string> {
     endpoint = 'auth';
     token: string;
     redirectUrl: string;
@@ -23,9 +23,14 @@ export class AuthService extends CrudService {
         this.token = this.storage.read(AUTH_TOKEN) || '';
     }
 
+    public async postPromise(body): Promise<any> {
+        return this.post(body).toPromise();
+    }
+
+
     public async login(email: string, password: string) {
         try {
-            this.token = await this.post({ email, password });
+            this.token = await this.postPromise({ email, password });
             this.storage.save(AUTH_TOKEN, this.token);
             return this.redirectUrl;
         } catch (error) {

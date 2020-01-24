@@ -9,6 +9,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HttpConfigInterceptor } from './core/services/http/interceptor.service';
 
 
+
 @NgModule({
     declarations: [AppComponent],
     imports: [
@@ -16,7 +17,7 @@ import { HttpConfigInterceptor } from './core/services/http/interceptor.service'
         BrowserAnimationsModule,
         AppRoutingModule,
         NavModule,
-        HttpClientModule,
+        HttpClientModule
     ],
     providers: [
         {

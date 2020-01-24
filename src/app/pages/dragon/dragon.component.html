@@ -1,3 +1,11 @@
+<div class="start-flex flex-end ">
+    <div class="position-right">
+        <button mat-fab color="success" (click)="onAddDragon()">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+
+</div>
 <table mat-table [dataSource]="dataSource">
     <ng-container matColumnDef="createdAt">
         <th mat-header-cell *matHeaderCellDef> Data de Criação </th>
@@ -26,4 +34,4 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-<button routerLink="/nav/dragon/dragon-edit">Adição</button>
+<button (click)="onAdd()">Adição</button>
