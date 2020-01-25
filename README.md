@@ -9,7 +9,7 @@ nome: user \
 senha: user
 
 ## Execução
-Após Fazer o download do projeto faça o seguinte comando: 
+Após fazer o download do projeto faça o seguinte comando: 
 
 ````
 npm install
@@ -32,18 +32,19 @@ A listagem de nomes estão em ordem alfabética.
 A partir da lista, deverá ser possível remover e alterar as informações dos dragões.
 E na página de detalhes são exibo as seguintes informações:
 
-Data de criação;
-Nome;
-Tipo.
+
+* Data de criação; 
+* Nome; 
+* Tipo; 
 
 Também é possível cadastrar um novo dragão.
 
 ## Screenshots
-Login Page
+Página de Login
 
 ![Login Page](docs/images/login.png)
 
- Sidenav Page
+ Listagem
  
 ![Sidenav Page](docs/images/sidenav.png)
 
