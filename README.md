@@ -37,6 +37,6 @@ Login Page
  
 ![Sidenav Page](docs/images/sidenav.png)
 
-![Demonstração](docs/gif/dragon-web.gif)
+###
 
 
