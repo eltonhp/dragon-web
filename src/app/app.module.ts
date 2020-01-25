@@ -8,13 +8,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HttpConfigInterceptor } from './core/services/http/interceptor.service';
 import {MaterialModule} from './core/components/material/material.module';
+import {AlertComponent} from './directives/alert.component';
 
 
 
 
 
 @NgModule({
-    declarations: [AppComponent],
+    declarations: [AppComponent, AlertComponent],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,

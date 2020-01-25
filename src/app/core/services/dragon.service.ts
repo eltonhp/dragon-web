@@ -5,7 +5,7 @@ import {environment} from '../../../environments/environment';
 import {MessageService} from './message.service';
 import {Dragon} from '../model/dragon';
 import {switchMap, tap} from 'rxjs/operators';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 
 /**
  * @author Elton H. Paula
@@ -33,7 +33,7 @@ export class DragonService extends  CrudService<Dragon> {
           observable = this.post(dragon);
       }
 
-      return observable.pipe(switchMap(value => message));
+      return observable.pipe(switchMap(r => [message]));
   }
 
 

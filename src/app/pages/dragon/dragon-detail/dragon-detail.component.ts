@@ -6,6 +6,7 @@ import {switchMap} from 'rxjs/operators';
 import {DragonService} from '../../../core/services/dragon.service';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import {ConfirmDialogComponent} from '../../../core/components/confirm-dialog/confirm-dialog.component';
+import {MessageService} from '../../../core/services/message.service';
 
 @Component({
   selector: 'app-dragon-detail',
@@ -19,7 +20,8 @@ export class DragonDetailComponent implements OnInit {
               private dragonService: DragonService,
               private route: ActivatedRoute,
               private confirmDialog: MatDialog,
-              private router: Router) { }
+              private router: Router,
+              private messageService: MessageService) { }
 
   ngOnInit() {
       this.route.paramMap.pipe(
@@ -54,9 +56,15 @@ export class DragonDetailComponent implements OnInit {
 
     }
 
-    private async  removeDragon() {
-        const result = await this.dragonService.deleteById(this.dragon.id);
-        this.goBack();
+    private removeDragon() {
+        this.dragonService.deleteById(this.dragon.id).subscribe(result => {
+            const msg = `Dragon de código: ${result.id} foi removido com sucesso!`;
+            this.messageService.success(msg, true, true);
+            this.goBack();
+        }, error => {
+            this.messageService.error(`${error}  - o dragon não foi removido!`, 'danger', true);
+        });
+
     }
 
     onEdit($event: MouseEvent) {

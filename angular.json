@@ -33,6 +33,7 @@
                 "src/app/core/styles/nav-styles.scss"
             ],
             "scripts": ["node_modules/jquery/dist/jquery.js",
+                        "node_modules/bootstrap-notify/bootstrap-notify.js",
                         "node_modules/bootstrap/dist/js/bootstrap.js"],
             "es5BrowserSupport": true
           },

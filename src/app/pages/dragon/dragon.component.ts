@@ -59,9 +59,7 @@ export class DragonComponent implements OnInit, OnDestroy, AfterContentChecked  
         this.clearDataSourceDragon();
     }
 
-     ngOnDestroy() {
-        console.log('destroi');
-    }
+     ngOnDestroy() {}
 
     ngAfterContentChecked(): void {
          this.loadDataSourceDragon();

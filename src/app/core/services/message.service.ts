@@ -1,4 +1,6 @@
 import {Injectable} from '@angular/core';
+import {AlertService} from './alert.service';
+import {Router} from '@angular/router';
 
 /**
  * @author Elton H. Paula
@@ -6,19 +8,26 @@ import {Injectable} from '@angular/core';
 @Injectable({
     providedIn: 'root'
 })
-export class MessageService  {
+export class MessageService extends AlertService{
 
-    constructor() {}
+    constructor(public router: Router) {
+        super(router)
+    }
 
-    error(status: number | undefined, s: string) {
-        let message = s;
+    errorMessage(status: number | undefined) {
+        let message = '';
         switch (status) {
             case 500:
-                message = 'Error interno no servidor';
+                message = 'Error interno no servidor ';
+                break;
+            case 404:
+                message = `Cod: ${status} - Registro não encontrado no servidor interno `;
                 break;
 
-        }
+            default:
+                message = `Cod: ${status} `;
 
-          console.error(message);
+        }
+        return message;
     }
 }

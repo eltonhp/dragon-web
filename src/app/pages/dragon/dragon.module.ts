@@ -7,9 +7,10 @@ import {MaterialModule} from '../../core/components/material/material.module';
 import { DragonEditComponent } from './dragon-edit/dragon-edit.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ConfirmDialogComponent} from '../../core/components/confirm-dialog/confirm-dialog.component';
+import {AutofocusDirective} from '../../directives/auto-focus-directive';
 
 @NgModule({
-    declarations: [DragonComponent, DragonDetailComponent, DragonEditComponent, ConfirmDialogComponent],
+    declarations: [AutofocusDirective, DragonComponent, DragonDetailComponent, DragonEditComponent, ConfirmDialogComponent],
     schemas: [ CUSTOM_ELEMENTS_SCHEMA],
     imports: [CommonModule,
               DragonRoutingModule,

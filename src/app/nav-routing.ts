@@ -13,19 +13,12 @@ export const sideNavPath = 'nav';
 
 export const navRoutes: NavRoute[] = [
     {
-        data: { title: 'Home' },  icon: 'home',  path: 'home',
-        loadChildren: () =>
-            import('./pages/home-page/home-page.module').then(
-                m => m.HomePageModule,
-            ),
-    },
-    {
         path: '',
         redirectTo: 'dragon',
         pathMatch: 'full',
     },
 
-    { path: 'dragon', data: { title: 'Dragon', action: {button: 'add', uri: '/nav/dragon/dragon-edit'} },
+    { path: 'dragon', icon: 'home', data: { title: 'Dragon', action: {button: 'add', uri: '/nav/dragon/dragon-edit'} },
         loadChildren: () =>
             import('./pages/dragon/dragon.module').then(
                 m => m.DragonModule,
