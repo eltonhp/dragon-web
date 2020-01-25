@@ -6,16 +6,24 @@ Para fazer o login use as seguintes credenciais:
 nome: user
 senha: user
 
-## Run
-Após baixar o sistema faça o seguinte comando: 
+## Execução
+Após Fazer o download do projeto faça o seguinte comando: 
+
+````
 npm install
+````
+
 
 E para iniciar o sistema faça a seguinte instrução:
- 
-ng serve --proxy-config proxy.conf.json
+
+ ````
+   ng serve 
+ ````
+
 
 O sistema irá levantar na porta 4200
-## Description
+
+## Descrição
 
 O Projeto Dragon tem uma página de login e uma página de listagem de dragões.
 A listagem de nomes estão em ordem alfabética. 
@@ -37,6 +45,8 @@ Login Page
  
 ![Sidenav Page](docs/images/sidenav.png)
 
+
+![Video](docs/gif/dragon-web.gif)
 ###
 
 

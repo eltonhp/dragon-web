@@ -16,12 +16,10 @@ declare var $: any;
  * @author Elton H. Paula
  */
 export class AlertComponent implements OnInit, OnDestroy {
-    // Tempo da mensagem de sucesso
-    // (Acrescenta 5 segundos a mais, valor de delay padrão do componente)
-    public static TIMER_SUCCESS = 1000;
-    // Tempo da mensagem quando ela não for de sucesso
-    // (Acrescenta 5 segundos a mais, valor de delay padrão do componente)
-    public static TIMER_NO_SUCCESS = 5000;
+
+    public static TIMER_SUCCESS = 500;
+
+    public static TIMER_NO_SUCCESS = 2000;
     private subscription: Subscription;
     message: any;
     lastMessage: String;
@@ -75,6 +73,7 @@ export class AlertComponent implements OnInit, OnDestroy {
             },
             type: typeAsResult,
             timer: timerMessage,
+            delay: timerMessage,
             placement: {
                 from: from,
                 align: align
