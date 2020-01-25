@@ -1,7 +1,7 @@
 # Dragon-Web
 Olá seja bem vindo ao sistema Dragon WEB. \
 O projeto foi desenvolvido em Angular 8, e as requisições REST foram feito
-através da API `rxjs` que se encontra atualmente nativo no Angular.
+através da API `rxjs`, os detalhes desta biblioteca pode ser visto no site [angular.io](https://angular.io/guide/rx-library).
 
 Para fazer o login use as seguintes credenciais:
 
