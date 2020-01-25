@@ -1,9 +1,11 @@
 # Dragon-Web
-Olá seja bem vindo ao sistemas Dragon WEB
+Olá seja bem vindo ao sistema Dragon WEB. \
+O projeto foi desenvolvido em Angular 8, e as requisições REST foram feito
+através da API `rxjs` que se encontra atualmente nativo no Angular.
 
 Para fazer o login use as seguintes credenciais:
 
-nome: user
+nome: user \
 senha: user
 
 ## Execução
@@ -23,8 +25,8 @@ E para iniciar o sistema faça a seguinte instrução:
 
 O sistema irá levantar na porta 4200
 
-## Descrição
 
+## Descrição
 O Projeto Dragon tem uma página de login e uma página de listagem de dragões.
 A listagem de nomes estão em ordem alfabética. 
 A partir da lista, deverá ser possível remover e alterar as informações dos dragões.
@@ -45,7 +47,7 @@ Login Page
  
 ![Sidenav Page](docs/images/sidenav.png)
 
-
+Video
 ![Video](docs/gif/dragon-web.gif)
 ###
 
